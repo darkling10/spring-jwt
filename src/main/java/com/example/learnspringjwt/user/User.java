@@ -2,7 +2,6 @@ package com.example.learnspringjwt.user;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +12,8 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 @Entity
 @Table(name = "_user")
 public class User implements UserDetails {
@@ -45,7 +45,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public @NotNull String getPassword() {
+    public String getPassword() {
         return password;
     }
 
